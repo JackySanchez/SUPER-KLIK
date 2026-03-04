@@ -1,0 +1,525 @@
+/* ==================================================
+   IDENTIDAD VISUAL CORPORATIVA: KLIK
+   Diseño: Dashboard Profesional (Estructura de Cuadrícula)
+   ================================================== */
+
+:root {
+    /* Paleta de Colores Bodega Aurrera / Corporativo */
+    --color-klik: #008f11;      /* Verde Principal */
+    --color-accent: #e31d2b;    /* Rojo Alertas / Salir */
+    --color-warning: #f39c12;   /* Naranja/Amarillo Crítico */
+    --bg-light: #f4f7f6;        /* Fondo General Grisáceo */
+    --panel-white: #ffffff;     /* Fondo de Recuadros */
+    --text-dark: #2c3e50;       /* Texto Principal */
+    --text-muted: #777777;      /* Texto Secundario */
+    --border-light: #e0e0e0;
+}
+
+/* 1. CONFIGURACIÓN BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-dark);
+}
+
+/* 2. CONTENEDOR PRINCIPAL (EL RECUADRO GRANDE) */
+.panel-container, .login-container {
+    background: var(--panel-white);
+    width: 100%;
+    max-width: 850px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-light);
+}
+
+/* 3. CABECERA */
+.panel-header, .brand-header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 2px solid var(--color-klik);
+    padding-bottom: 20px;
+}
+
+.panel-header h1, .brand-name {
+    color: var(--color-klik);
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.brand-tagline {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 4. RECUADROS DE NAVEGACIÓN (2 COLUMNAS - ARRIBA) */
+.grid-acciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card-accion {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 25px;
+    border: 1.5px solid #eee;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.card-accion:hover {
+    border-color: var(--color-klik);
+    background-color: #f9fff9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-right: 20px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.card-text h3 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin: 0;
+    font-weight: 700;
+}
+
+.card-text p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Color especial para el botón de salir */
+.card-accion.logout:hover {
+    border-color: var(--color-accent);
+    background-color: #fff5f5;
+}
+.card-accion.logout h3 {
+    color: var(--color-accent);
+}
+
+/* 5. SECCIÓN DE ESTADOS (ABAJO) */
+.panel-info {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #efefef;
+    text-align: center;
+}
+
+.panel-info h3 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.grid-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.stat-item {
+    flex: 1;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-klik);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Colores de las estadísticas */
+.stat-item.critico .stat-number { color: var(--color-warning); }
+.stat-item.agotado .stat-number { color: var(--color-accent); }
+
+/* 6. FORMULARIOS (LOGIN Y REGISTRO) */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    background: #fafafa;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-klik);
+    background: #fff;
+}
+
+.btn-primary {
+    width: 100%;
+    background-color: var(--color-klik);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #00700d;
+}
+
+/* 7. ESTILO PARA EL LOGO CIRCULAR (LOGIN) */
+.logo-circle {
+    width: 70px;
+    height: 70px;
+    background-color: var(--color-klik);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 auto 15px;
+}
+
+/* Mensajes de Alerta */
+.mensaje-error { color: var(--color-accent); background: #fee2e2; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 0.85rem; }
+.mensaje-exito { color: var(--color-klik); background: #dcfce7; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 0.85rem; }
+
+/* CONTENEDOR DE INVENTARIO */
+.panel-inventario {
+    background: white;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* CABECERA ESTILO FACTURA/EMPRESA */
+.header-empresa {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.logo-small { width: 60px; height: auto; margin-right: 15px; }
+
+.info-logo { display: flex; align-items: center; }
+.texto-logo h2 { color: #00a8e8; font-size: 1.4rem; margin: 0; }
+.texto-logo p { color: #888; font-size: 0.8rem; }
+
+.info-contacto p, .info-fiscal p { font-size: 0.85rem; color: #555; margin: 2px 0; }
+.info-fiscal h2 { font-size: 1.1rem; color: #333; margin-bottom: 5px; }
+
+/* RESUMEN DE VALORES (BARRA GRIS) */
+.resumen-valores {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.dato-resumen { flex: 1; }
+.titulo-dato { display: block; font-size: 0.85rem; color: #666; font-weight: bold; }
+.valor-dato { font-size: 1.3rem; color: #333; font-weight: 500; }
+
+.separador-v { width: 1px; height: 40px; background: #ddd; margin: 0 40px; }
+
+/* TABLA ESTILO KLIK / PROFESIONAL */
+.tabla-klik {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-klik th {
+    background-color: #00a896; /* Verde azulado de la imagen */
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.tabla-klik td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+}
+
+.tabla-klik tr:nth-child(even) { background-color: #fcfcfc; }
+.tabla-klik tr:hover { background-color: #f1f8f7; }
+
+.btn-eliminar {
+    color: #e31d2b;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+/* Contenedor del Resumen */
+.resumen-valores {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #edf2f7;
+}
+
+/* Alineación del Botón a la Derecha */
+.contenedor-boton-pdf {
+    margin-left: auto;
+}
+
+/* Estilo del Botón PDF */
+.btn-generar-reporte {
+    background-color: #e31d2b; /* Rojo elegante */
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(227, 29, 43, 0.2);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Efecto al pasar el Mouse */
+.btn-generar-reporte:hover {
+    background-color: #b31621;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(227, 29, 43, 0.4);
+}
+
+/* Tamaño del Icono SVG */
+.icon-pdf {
+    width: 20px;
+    height: 20px;
+}
+
+/* Ajuste de los Textos del Resumen */
+.titulo-dato {
+    display: block;
+    color: #718096;
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.valor-dato {
+    font-size: 1.6rem;
+    color: #2d3748;
+    font-weight: 700;
+}
+
+/* Contenedor de acciones en el header */
+.acciones-header {
+    display: flex;
+    align-items: center;
+}
+
+/* Botón Regresar Estilizado */
+.btn-regresar-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f1f5f9;
+    color: #475569 !important;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.btn-regresar-top:hover {
+    background-color: #e2e8f0;
+    color: #1e293b !important;
+    transform: translateX(-3px);
+}
+
+.btn-regresar-top svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-regresar-top:hover svg {
+    transform: translateX(-3px);
+}
+
+/* Ajuste al header para que sea flexible */
+.header-empresa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f1f5f9;
+    margin-bottom: 25px;
+}
+
+
+/* Fondo para la página de login */
+.login-body {
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal del Login */
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 450px;
+    text-align: left;
+}
+
+/* El logo circular "K" */
+.logo-circle {
+    background-color: #008f11;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 auto 15px;
+}
+
+.brand-name {
+    color: #008f11;
+    font-size: 2rem;
+    margin: 0;
+    text-align: left;
+}
+
+.brand-subtitle {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Pestañas Ingresar/Registro */
+.login-tabs {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.tab-btn.active {
+    border-bottom: 2px solid #008f11;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Inputs y Botón */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    background-color: #f0f4f9;
+    box-sizing: border-box; /* Muy importante para que no se salga del cuadro */
+}
+
+.btn-acceder {
+    width: 100%;
+    background-color: #008f11;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-acceder:hover {
+    background-color: #007a0e;
+}
