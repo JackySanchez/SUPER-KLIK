@@ -1,10 +1,8 @@
 <?php
 date_default_timezone_set('America/Mexico_City');
-// ... resto del código
 session_start();
 if (!isset($_SESSION['usuario'])) { header("Location: login.php"); exit; }
 
-// Carpeta donde se guardan los PDF
 $carpeta = "reportes/";
 
 // Crear la carpeta si no existe
@@ -13,20 +11,25 @@ if (!file_exists($carpeta)) {
 }
 
 $archivos_pdf = [];
-// Escanear la carpeta en busca de archivos .pdf
 $files = glob($carpeta . "*.pdf");
 
 if ($files) {
     foreach ($files as $ruta_completa) {
-        $nombre_archivo = basename($ruta_completa);
-        $timestamp = filemtime($ruta_completa);
+        $timestamp = filemtime($ruta_completa); 
         $archivos_pdf[] = [
-            'nombre' => $nombre_archivo,
-            'fecha' => date("d/m/Y", $timestamp),
-            'hora' => date("H:i:s", $timestamp),
-            'ruta' => $ruta_completa
+            'nombre' => basename($ruta_completa),
+            'fecha'  => date("d/m/Y", $timestamp),
+            'hora'   => date("H:i:s", $timestamp),
+            'ruta'   => $ruta_completa,
+            'time'   => $timestamp 
         ];
     }
+
+    // --- ORDENAR: DEL MÁS ACTUAL AL MÁS ANTIGUO ---
+    usort($archivos_pdf, function($a, $b) {
+        // Al poner $b antes que $a, invertimos el orden (Descendente)
+        return $b['time'] <=> $a['time'];
+    });
 }
 
 // Lógica para eliminar
