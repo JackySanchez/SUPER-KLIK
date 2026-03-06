@@ -12,8 +12,11 @@ if ($accion === 'login') {
     if (file_exists($archivo)) {
         $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         foreach ($lineas as $l) {
+            // Separamos el usuario y la clave que están en el TXT
             list($u, $p) = explode("|", $l);
-            if ($user === $u && $pass === $p) {
+
+            // CAMBIO AQUÍ: Usamos password_verify en lugar de ===
+            if ($user === $u && password_verify($pass, $p)) {
                 $valido = true;
                 break;
             }
@@ -22,7 +25,7 @@ if ($accion === 'login') {
 
     if ($valido) {
         $_SESSION['usuario'] = $user;
-        header("Location: index.php"); // ESTO HACE QUE SE MUEVA A LA PRINCIPAL
+        header("Location: index.php");
         exit;
     } else {
         header("Location: login.php?error=credenciales");
@@ -33,14 +36,20 @@ if ($accion === 'login') {
 // --- CASO 2: REGISTRO ---
 if ($accion === 'registro') {
     $nuevo_u = $_POST['nuevo_usuario'] ?? '';
-    $nuevo_p = $_POST['nueva_password'] ?? '';
+    $nuevo_p = $_POST['nueva_password'] ?? ''; // <--- Aquí recibes la clave normal
 
     if (!empty($nuevo_u) && !empty($nuevo_p)) {
-        $linea = $nuevo_u . "|" . $nuevo_p . PHP_EOL;
+        
+        // --- AQUÍ ENTRA TU CÓDIGO DE ENCRIPTACIÓN ---
+        // Convertimos la clave "1234" en algo como "$2y$10$..."
+        $password_encriptada = password_hash($nuevo_p, PASSWORD_DEFAULT);
+        
+        // Guardamos en el archivo: Usuario | Clave Encriptada
+        $linea = $nuevo_u . "|" . $password_encriptada . PHP_EOL;
+        
         file_put_contents("usuarios.txt", $linea, FILE_APPEND);
         
-        $_SESSION['usuario'] = $nuevo_u; // Logueo automático tras registrar
-        header("Location: index.php");
+        header("Location: login.php?registro=exito");
         exit;
     }
 }
