@@ -47,7 +47,7 @@ if ($filtro == 'agotados' && $cantidad <= 0) {
             <label><strong>MOSTRAR:</strong></label>
             <select name="criterio" onchange="this.form.submit()" style="padding:10px; border-radius:5px; border:1px solid #ccc;">
                 <option value="todos" <?php echo $filtro == 'todos' ? 'selected' : ''; ?>>Todo el Inventario</option>
-                <option value="criticos" <?php echo $filtro == 'criticos' ? 'selected' : ''; ?>>Stock Crítico (1-10)</option>
+                <option value="criticos" <?php echo $filtro == 'criticos' ? 'selected' : ''; ?>>Stock Crítico (1-20)</option>
                 <option value="agotados" <?php echo $filtro == 'agotados' ? 'selected' : ''; ?>>Agotados (0)</option>
             </select>
         </form>
@@ -105,4 +105,5 @@ if ($filtro == 'agotados' && $cantidad <= 0) {
     </table>
 </div>
 </body>
+
 </html>
